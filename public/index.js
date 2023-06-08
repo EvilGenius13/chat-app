@@ -7,6 +7,8 @@ $(document).ready(()=>{
   socket.emit('get online users');
   //Each user should be in the general channel by default.
   socket.emit('user changed channel', "General");
+  // Get channels from server
+  socket.emit('get channels');
 
   //Users can change the channel by clicking on its name.
   $(document).on('click', '.channel', (e)=>{
@@ -109,5 +111,13 @@ $(document).ready(()=>{
       `);
     });
   })
+
+  socket.on('get channels', (channels) => {
+    for (let channel in channels) {
+      if (channel !== "General") {
+        $('.channels').append(`<div class="channel">${channel}</div>`);
+      }
+    }
+  });
 
 });
