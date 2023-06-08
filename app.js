@@ -15,7 +15,7 @@ io.on("connection", (socket) => {
 });
 
 //Express View Engine for Handlebars
-const exphbs  = require('express-handlebars');
+const exphbs = require('express-handlebars');
 app.engine('handlebars', exphbs.engine({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 app.use('/public', express.static('public'));
